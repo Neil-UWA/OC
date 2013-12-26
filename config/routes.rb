@@ -2,6 +2,6 @@ LearningApp::Application.routes.draw do
 
 	resources :users
 
-  get "home/index"
+	match '/home', to: 'home#index', via: 'get'
   root "home#index"
 end
