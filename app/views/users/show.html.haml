@@ -1,0 +1,8 @@
+%h2 The following shows the user registration information
+
+.input-group
+  =text_field_tag :username, @user.name, class:"form-control"
+  =text_field_tag :email, @user.email, class:"form-control"
+  =text_field_tag :password, @user.password, class:"form-control"
+
+=link_to "home", {controller: :home, action: :index}, class: "link"

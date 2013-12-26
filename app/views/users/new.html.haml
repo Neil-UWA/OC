@@ -1,9 +1,17 @@
 #register-form
-  =form_for @user do |user_form| 
+  -if @user.errors.any?
+    %h1 Error Message
+    .error-explaination
+      -@user.errors.full_messages.each do |msg|
+        %p #{msg}
+
+  =form_for @user, url:users_path do |user_form| 
     = user_form.text_field :name, {class: "form-control", placeholder:"user name"}
     %br/
     = user_form.text_field :email, {class: "form-control", placeholder:"email"}
     %br/
-    = user_form.text_field :password, {class: "form-control", placeholder:"password"}
+    = user_form.password_field :password, {class: "form-control", placeholder:"password"}
+    %br/
+    = user_form.password_field :password_confirmation, {class: "form-control", placeholder:"confirmation"}
     %br/
     = user_form.submit "Register",{class: "btn btn-primary btn-lg btn-block"}
