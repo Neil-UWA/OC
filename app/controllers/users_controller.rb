@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 	def index
 		@users = User.all	
 	end
+
 	def new
 		@user = User.new	
 	end
@@ -21,6 +22,6 @@ class UsersController < ApplicationController
 
 	private
 		def post_params
-			params[:user].permit(:name, :email, :password)	
+			params[:user].permit(:name, :email, :password, :password_confirmation)	
 		end
 end

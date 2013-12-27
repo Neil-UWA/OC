@@ -5,15 +5,10 @@ body {
   padding-bottom: 20px;
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
-	.header{
+	.header, .marketing,
+	.footer {
 		padding-left: 15px;
 		padding-right: 15px;
-	}
-	.marketing{
-		@extend .header;
-	}
-	.footer {
-		@extend .header;
 	}
 
 	/* Custom page header */
@@ -67,15 +62,10 @@ body {
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   /* Remove the padding we set earlier */
-	.header{
+	.header, .marketing,
+  .footer {
     padding-left: 0;
     padding-right: 0;
-	}
-	.marketing{
-		@extend .header;
-	}
-  .footer {
-		@extend .header;
   }
   /* Space out the masthead */
   .header {
@@ -89,6 +79,3 @@ body {
 
 #carbonads-container {display:none} h1[id] {padding-top:0px; margin-top:20px} .bs-old-docs {display:none} .bs-social {display:none} .col-md-3 {display:none !important} .col-md-9 {width:100% !important} .navbar-fixed-top {position:absolute !important}
 }
-
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/

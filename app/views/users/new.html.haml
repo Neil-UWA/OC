@@ -13,6 +13,10 @@
       = user_form.label :password, "Password"
       = user_form.password_field :password, {class: "form-control", placeholder:"password"}
 
+    .form-group
+      = user_form.label :password_confirmation, "Password"
+      = user_form.password_field :password_confirmation, {class: "form-control", placeholder:"confirmation"}
+
     = user_form.submit "Register",{class: "btn btn-primary btn-lg btn-block"}
 
 -if @user.errors.any? 
