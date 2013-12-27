@@ -1,7 +1,13 @@
 class User < ActiveRecord::Base
-	has_secure_password 
 
-	validates :name, :email, :password, presence: true 
-	validates :password, length: {minimum:6},
-                       confirmation: true
+  email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
+	validates :name, 
+						:email, 
+						:password, presence: true 
+
+	validates :email, format: {with:email_regex}
+
+	validates :password, length: {minimum:6}
+
 end
