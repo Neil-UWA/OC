@@ -2,7 +2,8 @@
 
 %html
   %head
-    %title LearningApp
+    %title 
+      =yield :title
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true 
     = stylesheet_link_tag "home", media: "all"
     = stylesheet_link_tag "users", media: "all"
@@ -14,11 +15,11 @@
       .header
         %ul.nav.nav-pills.pull-right
           %li.active 
-            =link_to "Home",{controller: "home", action: "index"} 
+            =link_to "Home", {controller: "home", action: "index"} 
           %li 
             =link_to "Sign In", "#"
           %li 
-            %a{:href=>"#"}Contact
+            =link_to "Contact", "#"
         %h3.text-muted Originate China
 
       = yield 
