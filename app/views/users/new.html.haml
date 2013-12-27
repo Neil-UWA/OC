@@ -1,28 +1,25 @@
-#register-form
+.jumbotron
+  %h2.form-signin-heading Please sign up
+
   =form_for @user, url:users_path, html:{class:"form-signin"} do |user_form| 
-    %h2.form-signin-heading Please sign up
     .form-group
-      = user_form.label :name, "Username"
       = user_form.text_field :name, {class: "form-control", placeholder:"user name"}
-
+  
     .form-group
-      = user_form.label :email, "Email"
       = user_form.text_field :email, {class: "form-control", placeholder:"email"}
-
+  
     .form-group
-      = user_form.label :password, "Password"
       = user_form.password_field :password, {class: "form-control", placeholder:"password"}
-
+  
     .form-group
-      = user_form.label :password_confirmation, "Password"
       = user_form.password_field :password_confirmation, {class: "form-control", placeholder:"confirmation"}
-
+  
     = user_form.submit "Register",{class: "btn btn-primary btn-lg btn-block"}
 
 -if @user.errors.any? 
   :javascript
     $('.field_with_errors').addClass("has-error");
 
-  -@user.errors.full_messages.each do |msg|
-    .alert.alert-danger 
-      #{msg}
+/  -@user.errors.full_messages.each do |msg|
+/    .alert.alert-danger 
+/      #{msg}

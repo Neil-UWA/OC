@@ -10,4 +10,18 @@
     = csrf_meta_tags 
 	  
   %body
-    = yield 
+    .container
+      .header
+        %ul.nav.nav-pills.pull-right
+          %li.active 
+            =link_to "Home",{controller: "home", action: "index"} 
+          %li 
+            =link_to "Sign In", "#"
+          %li 
+            %a{:href=>"#"}Contact
+        %h3.text-muted Originate China
+
+      = yield 
+
+      .footer
+        %p &copy; Company 2013
