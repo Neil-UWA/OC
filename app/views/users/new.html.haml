@@ -21,7 +21,3 @@
 -if @user.errors.any? 
   :javascript
     $('.field_with_errors').addClass("has-error");
-
-/  -@user.errors.full_messages.each do |msg|
-/    .alert.alert-danger 
-/      #{msg}

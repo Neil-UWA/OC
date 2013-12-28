@@ -1,0 +1,18 @@
+=provide :title, "Sign In"
+
+-if flash[:error] 
+  .alert.alert-danger
+    =flash[:error]
+
+.jumbotron
+  %h2.form-signin-heading Please sign in
+
+  =form_for :sessions, url:sessions_path, html:{class: "form-signin"} do |session_form|
+    .form_group
+      =session_form.text_field :name, {class:"form-control", placeholder:"Username"}
+
+    .form_group
+      =session_form.password_field :password, {class:"form-control", placeholder:"password"}
+
+    =session_form.submit "Sign In", class:"btn btn-primary btn-lg btn-block"
+
