@@ -5,8 +5,6 @@
     %title 
       =yield :title
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true 
-    = stylesheet_link_tag "home", media: "all"
-    = stylesheet_link_tag "users", media: "all"
     = javascript_include_tag "application", "data-turbolinks-track" => true 
     = csrf_meta_tags 
 	  
@@ -17,7 +15,7 @@
           %li.active 
             =link_to "Home", {controller: "home", action: "index"} 
           %li 
-            =link_to "Sign In", "#"
+            =link_to "Sign In", {controller: "users", action:"signin"} 
           %li 
             =link_to "Contact", "#"
         %h3.text-muted Originate China

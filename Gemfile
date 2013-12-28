@@ -16,6 +16,7 @@ group :production do
 	gem 'pg'
 end
 
+gem 'sprockets', '~> 2.0'
 gem 'bootstrap-sass'
 gem 'haml-rails'
 gem 'sass-rails', '~> 4.0.0'
