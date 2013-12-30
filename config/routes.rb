@@ -1,7 +1,11 @@
 LearningApp::Application.routes.draw do
 
   get "users/signin"
-	resources :users
+
+	resources :users do 
+		resources :posts, only:[:create, :new, :destroy]
+	end 
+
 	resources :sessions, only:[:create, :new, :destroy]
 
   root "home#index"
@@ -9,5 +13,6 @@ LearningApp::Application.routes.draw do
 	get 'home', to:'home#index'
 	get 'signup', to: 'users#new'
 	get 'signin', to: 'sessions#new'
+
 
 end
