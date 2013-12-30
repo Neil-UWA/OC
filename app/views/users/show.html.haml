@@ -1,5 +1,5 @@
 .jumbotron
-  - if @user.posts.length != 0
+  - if @user.posts.any?
     %ul.list-group
     -@user.posts.each do |post|
       %li.list-group-item #{post.title} 
