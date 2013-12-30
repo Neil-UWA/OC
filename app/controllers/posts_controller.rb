@@ -6,7 +6,7 @@ class PostsController < ApplicationController
 
 		#create a post and save it
 		#need to do error handling here
-		@post = @user.posts.create(params[:post].permit(:title, :content, :category))
+		@post = @user.posts.create(params[:post].permit(:title, :content))
 		redirect_to @user 
 	end
 end

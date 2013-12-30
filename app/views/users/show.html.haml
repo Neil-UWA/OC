@@ -13,7 +13,5 @@
   .form-group
     =post_form.label :content 
     =post_form.text_area :content, {rows: 20, class:"form-control"}
-  .form-group
-    =post_form.label :title 
-    =post_form.text_field :title, {class:"form-control"}
-  =post_form.submit "Post", {class:"btn btn-primary"}
+
+  =post_form.submit "Post", {class: "btn btn-primary"} 
