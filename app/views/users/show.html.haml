@@ -1,3 +1,5 @@
 .jumbotron
-  %h2.alert.alert-success Start to create your first post? 
-  =link_to "Create a Post", new_user_post_path(@user)
+  -if flash[:notice]
+    %h2.alert.alert-success #{flash[:notice]} 
+  =link_to "Create a Post", new_user_post_path(@user), {style: "display:block;"}
+  =link_to "All Posts", user_posts_path(@user), {style:"display:block;"}

@@ -1,3 +1,5 @@
+-provide(:title,"New Post")
+
 %h1 Post#New
 
 =form_for [@user, @post] do |post_form|
@@ -14,3 +16,7 @@
         =category_form.text_field :category, {class: "form-control"}
 
   =post_form.submit "Post", {class: "btn btn-primary"} 
+
+-if @post.errors.any? 
+  :javascript
+    $('.field_with_errors').addClass("has-error");

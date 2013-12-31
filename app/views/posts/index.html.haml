@@ -1,4 +1,10 @@
+-provide(:title, "All Posts")
+
 %h1 Posts#Index
+
+-if flash[:notice]
+  .jumbotron
+    =flash[:notice]
 
 - if @posts.any?
   .panel.panel-default
