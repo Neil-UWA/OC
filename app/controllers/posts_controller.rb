@@ -14,9 +14,16 @@ class PostsController < ApplicationController
 
 	def create
 		@user = User.find(params[:user_id])
-		@post = @user.posts.create(params[:post].permit(:title, :content))
+		@post = @user.posts.build(params[:post].permit(:title, :content))
+		@category = @post.categories.build(params[:category].permit(:category))
+		
+		if @post.save and @category.save
+			redirect_to user_posts_path(@user), notice: "Successfull created a post"
+		else 
+			flash[:notice]= "Title or Content can not be empty"	
+			render "new"
+		end 
 
-		redirect_to user_posts_path(@user), notice: "Successfull created a post"
 	end
 
 	def edit

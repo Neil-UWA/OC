@@ -2,6 +2,10 @@
 
 %h1 Post#New
 
+-if flash[:notice]
+  .jumbotron
+    =flash[:notice]
+
 =form_for [@user, @post] do |post_form|
   .form-group
     =post_form.label :title 
