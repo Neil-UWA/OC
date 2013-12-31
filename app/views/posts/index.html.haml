@@ -1,0 +1,18 @@
+%h1 Posts#Index
+
+- if @posts.any?
+  .panel.panel-default
+    .panel-heading
+      %span.label.label-primary Title
+      %span.pull-right Tag
+
+  %ul.list-group
+    -@posts.each do |post|
+      %li.list-group-item 
+        =link_to "#{post.title}", edit_user_post_path(@user, post) 
+        %span.badge 
+          -if post.categories.count !=0
+            -post.categories.each do |category|
+              #{category.category}
+          -else
+            0

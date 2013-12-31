@@ -1,17 +1,3 @@
 .jumbotron
-  - if @user.posts.any?
-    %ul.list-group
-    -@user.posts.each do |post|
-      %li.list-group-item #{post.title} 
-  - else
-    %h2.alert.alert-success Start to create your first post? 
-
-=form_for [@user, @user.posts.build] do |post_form|
-  .form-group
-    =post_form.label :title 
-    =post_form.text_field :title, {class:"form-control"}
-  .form-group
-    =post_form.label :content 
-    =post_form.text_area :content, {rows: 20, class:"form-control"}
-
-  =post_form.submit "Post", {class: "btn btn-primary"} 
+  %h2.alert.alert-success Start to create your first post? 
+  =link_to "Create a Post", new_user_post_path(@user)

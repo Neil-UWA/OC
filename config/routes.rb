@@ -3,7 +3,7 @@ LearningApp::Application.routes.draw do
   get "users/signin"
 
 	resources :users do 
-		resources :posts, only:[:create, :new, :destroy]
+		resources :posts
 	end 
 
 	resources :sessions, only:[:create, :new, :destroy]

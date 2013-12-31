@@ -1,0 +1,14 @@
+=form_for @user, url:users_path, html:{class:"form-signin"} do |user_form| 
+  .form-group
+    = user_form.text_field :name, {class: "form-control", placeholder:"user name"}
+
+  .form-group
+    = user_form.text_field :email, {class: "form-control", placeholder:"email"}
+
+  .form-group
+    = user_form.password_field :password, {class: "form-control", placeholder:"password"}
+
+  .form-group
+    = user_form.password_field :password_confirmation, {class: "form-control", placeholder:"confirmation"}
+
+  = user_form.submit "Register",{class: "btn btn-primary btn-lg btn-block"}
