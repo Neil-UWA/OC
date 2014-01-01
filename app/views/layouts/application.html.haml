@@ -7,17 +7,20 @@
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true 
     = javascript_include_tag "application", "data-turbolinks-track" => true 
     = csrf_meta_tags 
-	  
+
   %body
     .container
       .header
         %ul.nav.nav-pills.pull-right
           %li.active 
             =link_to "Home", {controller: "home", action: "index"} 
-          %li 
-            -if session[:id]
-              =link_to "Sign Out", signin_path 
-            -else
+          -if signed_in?
+            %li 
+              =link_to current_user.name.camelcase, user_path(current_user) 
+            %li 
+              =link_to "Sign Out", signout_path 
+          -else
+            %li
               =link_to "Sign In", signin_path 
           %li 
             =link_to "Contact", "#"
