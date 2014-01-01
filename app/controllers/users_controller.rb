@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+	before_action :signed_in_user
+
 	def new
 		@user = User.new	
 	end
@@ -6,6 +8,7 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(post_params)
 		if @user.save
+			sign_in @user
 			redirect_to @user, notice: "You have been registered to our service"
 		else 
 			render "new"
@@ -13,7 +16,8 @@ class UsersController < ApplicationController
 	end
 	
 	def show
-		@user = User.find(params[:id])	
+		@user = User.find(params[:id]) 
+		redirect_to root_path unless @user
 	end
 
 	private

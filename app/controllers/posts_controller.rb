@@ -2,6 +2,8 @@
 #		1. need to enbale multiple categories
 
 class PostsController < ApplicationController
+	before_action :signed_in_user
+
 	def index
 		@user = User.find(params[:user_id])
 		@posts = @user.posts 
