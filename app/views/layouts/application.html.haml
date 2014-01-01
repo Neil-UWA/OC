@@ -13,7 +13,7 @@
       .header
         %ul.nav.nav-pills.pull-right
           %li.active 
-            =link_to "Home", {controller: "home", action: "index"} 
+            =link_to "Home", root_path 
           -if signed_in?
             %li
               =link_to current_user.name.camelcase, user_path(current_user)
