@@ -26,6 +26,11 @@
             =link_to "Contact", "#"
         %h3.text-muted Originate China
 
+      -if flash[:notice]
+        .alert.alert-danger
+          .h3
+            =flash[:notice]
+
       = yield 
 
       .footer
