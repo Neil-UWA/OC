@@ -1,7 +1,5 @@
 -provide(:title, "Edit Post")
 
-%h1 Post#edit
-
 =form_for [@user, @post] do |post_form|
   .form-group
     =post_form.label :title 
@@ -12,9 +10,10 @@
     =post_form.text_area :content, {rows: 20, class:"form-control"}
 
   .form-group
-    =fields_for  @post.categories.build do |category_form|
-      .input-group
-        .input-group-addon Tag
-        =category_form.text_field :category, {class: "form-control"}
+    -@post.categories.each do |category|
+      =fields_for category do |category_form|
+        .input-group
+          .input-group-addon Tag
+          =category_form.text_field :category, {class: "form-control"}
 
   =post_form.submit "Post", {class: "btn btn-primary"} 

@@ -1,6 +1,3 @@
-# TODO 
-#		1. need to enbale multiple categories
-
 class PostsController < ApplicationController
 	before_action :signed_in_user
 
@@ -25,21 +22,18 @@ class PostsController < ApplicationController
 			flash.now[:notice]= "Title or Content can not be empty"	
 			render "new"
 		end 
-
 	end
 
 	def edit
 		@user = User.find(params[:user_id])
 		@post = @user.posts.find(params[:id])
-		@categories = @post.categories
 	end
 	
 	def update
 		@user = User.find(params[:user_id])
 		@post = Post.find(params[:id])		
 
-		if @post.update(params[:post].permit(:title, :content))
-			redirect_to user_posts_path(@user) 
-		end
+		redirect_to user_posts_path(@user) if @post.update(params[:post].permit(:title, :content)) 
 	end
+
 end
