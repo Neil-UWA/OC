@@ -22,7 +22,7 @@ class PostsController < ApplicationController
 		if @post.save and @category.save
 			redirect_to user_posts_path(@user), notice: "Successfull created a post"
 		else 
-			flash[:notice]= "Title or Content can not be empty"	
+			flash.now[:notice]= "Title or Content can not be empty"	
 			render "new"
 		end 
 
