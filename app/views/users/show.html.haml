@@ -1,5 +1,5 @@
 .jumbotron
   -if flash[:notice]
     %h2.alert.alert-success #{flash[:notice]} 
-  =link_to "Create a Post", new_user_post_path(@user), {style: "display:block;"}
-  =link_to "All Posts", posts_path, {style:"display:block;"}
+  =link_to "Create a Post", new_user_post_path(@user)
+  =link_to "All Posts", posts_path

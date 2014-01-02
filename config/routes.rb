@@ -1,17 +1,18 @@
 LearningApp::Application.routes.draw do
-
   get "users/signin"
-
-
-	resources :posts
 
 	resources :users do 
 		resources :posts
+		resources :comments
 	end 
 	
-	resources :pots do
+	resources :posts do
 		resources :categories, only: [:create, :update, :destroy]
+		resources :comments
 	end 
+
+	resources :posts
+	resources :comments
 
 	resources :sessions, only:[:create, :new, :destroy]
 	get 'signup', to: 'users#new'

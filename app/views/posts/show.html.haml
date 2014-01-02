@@ -1,6 +1,31 @@
-%h1{:style=>"text-align:center"}  #{@post.title} 
-%h3 Author: #{@post.user.name.camelcase}
-%h1 
-  =label_tag :content
-%p #{@post.content}
-  
+.panel.panel-primary
+  .panel-heading
+    %h1 #{@post.title} 
+    
+  .panel-body
+    %h6 by #{@post.user.name.camelcase}
+    %p #{@post.content}
+
+%h1 Comments
+
+-@post.comments.each do |comment|
+  .panel.panel-danger
+    -if comment.user
+      .panel-heading #{comment.title} -- by #{comment.user.name.camelcase}
+    -else
+      .panel-heading #{comment.title} -- by Anonymous
+
+    .panel-body #{comment.comment}
+
+
+=form_for [@post, @post.comments.build] do |comment_form|
+  .form-group
+    =comment_form.label :title
+    =comment_form.text_field :title, {class:"form-control"}
+
+  .form-group
+    =comment_form.label :comment
+    =comment_form.text_area :comment, {class:"form-control"}
+
+  =comment_form.submit "Comment", {class: "btn btn-primary"}
+
