@@ -32,6 +32,10 @@
         .alert.alert-danger
           .h3
             =flash[:notice]
+      -if flash[:success]
+        .alert.alert-success
+          .h3
+            =flash[:success]
 
       = yield 
 

@@ -16,7 +16,8 @@ class PostsController < ApplicationController
 		@category = @post.categories.build(params[:category].permit(:category))
 		
 		if @post.save and @category.save
-			redirect_to user_posts_path(@user), notice: "Successfull created a post"
+			flash.now[:success] =  "Successfull created a post"
+			redirect_to user_posts_path(@user) 
 		else 
 			flash.now[:notice]= "Title or Content can not be empty"	
 			render "new"
