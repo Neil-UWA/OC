@@ -25,6 +25,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
+gem 'bootstrap-will_paginate', '~>0.0.10'
 
 group :doc do
   gem 'sdoc', require: false

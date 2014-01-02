@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 	before_action :signed_in_user, except: [:index, :show]
 
 	def index
-		@posts = Post.all 
+		@posts = Post.paginate(page: params[:page], per_page:10)
 	end
 
 	def new
@@ -14,7 +14,7 @@ class PostsController < ApplicationController
 		@user = User.find(params[:user_id])
 		@post = @user.posts.build(params[:post].permit(:title, :content))
 		@category = @post.categories.build(params[:category].permit(:category))
-		
+
 		if @post.save and @category.save
 			flash.now[:success] =  "Successfull created a post"
 			redirect_to user_posts_path(@user) 
@@ -31,7 +31,7 @@ class PostsController < ApplicationController
 	def edit
 		@post = Post.find(params[:id]) 
 	end
-	
+
 	def update
 		@user = User.find(params[:user_id])
 		@post = Post.find(params[:id])		
