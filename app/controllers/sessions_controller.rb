@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 
 		if @user && @user.authenticate(params[:sessions][:password])
 			sign_in @user
-			redirect_to user_path(@user)	
+			redirect_to posts_path 
 		else
 			flash.now[:notice] = "Invalid Username/ Password"
 			render "new"

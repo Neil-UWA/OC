@@ -1,9 +1,8 @@
 class PostsController < ApplicationController
-	before_action :signed_in_user
+	before_action :signed_in_user, except: [:index, :show]
 
 	def index
-		@user = User.find(params[:user_id])
-		@posts = @user.posts 
+		@posts = Post.all 
 	end
 
 	def new
@@ -24,9 +23,12 @@ class PostsController < ApplicationController
 		end 
 	end
 
+	def show
+		@post = Post.find(params[:id])	
+	end
+
 	def edit
-		@user = User.find(params[:user_id])
-		@post = @user.posts.find(params[:id])
+		@post = Post.find(params[:id]) 
 	end
 	
 	def update

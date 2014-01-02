@@ -12,14 +12,16 @@
     .container
       .header
         %ul.nav.nav-pills.pull-right
-          %li.active 
-            =link_to "Home", root_path 
           -if signed_in?
+            %li.active 
+              =link_to "Home", posts_path 
             %li
               =link_to current_user.name.camelcase, user_path(current_user)
             %li 
               =link_to "Sign Out", signout_path
           -else
+            %li.active 
+              =link_to "Home", root_path 
             %li
               =link_to "Sign In", signin_path 
           %li 

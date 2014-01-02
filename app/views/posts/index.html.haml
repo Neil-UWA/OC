@@ -9,7 +9,7 @@
   %ul.list-group
     -@posts.each do |post|
       %li.list-group-item 
-        =link_to "#{post.title}", edit_user_post_path(@user, post) 
+        =link_to "#{post.title} -- #{post.user.name}", post_path(post) 
         %span.badge 
           -if post.categories.count !=0
             -post.categories.each do |category|

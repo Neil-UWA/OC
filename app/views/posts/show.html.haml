@@ -1,0 +1,6 @@
+%h1{:style=>"text-align:center"}  #{@post.title} 
+%h3 Author: #{@post.user.name.camelcase}
+%h1 
+  =label_tag :content
+%p #{@post.content}
+  

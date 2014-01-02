@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 		@user = User.new(post_params)
 		if @user.save
 			sign_in @user
-			redirect_to @user, sucess: "You have been registered to our service"
+			redirect_to posts_path, sucess: "You have been registered to our service"
 		else 
 			render "new"
 		end 
