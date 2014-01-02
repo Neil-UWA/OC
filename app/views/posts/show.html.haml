@@ -1,7 +1,7 @@
 .panel.panel-primary
   .panel-heading
-    %h1 #{@post.title} 
-    
+    %h1
+      =@post.title
   .panel-body
     %h6 by #{@post.user.name.camelcase}
     %p #{@post.content}
@@ -10,19 +10,16 @@
 
 -@post.comments.each do |comment|
   .panel.panel-danger
-    -if comment.user
-      .panel-heading #{comment.title} -- by #{comment.user.name.camelcase}
-    -else
-      .panel-heading #{comment.title} -- by Anonymous
-
-    .panel-body #{comment.comment}
+    .panel-body 
+      #{comment.comment}
+      %span.label.label-primary.pull-right 
+        -if comment.user.nil?
+          Anonymous
+        -else
+          #{comment.user.name.camelcase}
 
 
 =form_for [@post, @post.comments.build] do |comment_form|
-  .form-group
-    =comment_form.label :title
-    =comment_form.text_field :title, {class:"form-control"}
-
   .form-group
     =comment_form.label :comment
     =comment_form.text_area :comment, {class:"form-control"}
