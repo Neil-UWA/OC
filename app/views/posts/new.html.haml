@@ -6,7 +6,7 @@
     =post_form.text_field :title, {class:"form-control"}
   .form-group
     =post_form.label :content 
-    =post_form.text_area :content, {rows: 20, class:"form-control"}
+    =post_form.text_area :content, {rows: 20, class:"form-control", "data-provide" => "markdown"}
   .form-group
     =fields_for  @post.categories.build do |category_form|
       .input-group
