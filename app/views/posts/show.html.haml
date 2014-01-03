@@ -3,7 +3,8 @@
     %h1
       =@post.title
   .panel-body
-    %h6 by #{@post.user.name.camelcase}
+    %h6 by #{@post.user.name.camelcase} 
+    %h6 #{@post.created_at}
     %p #{@post.content}
 
 %h1 Comments
@@ -14,9 +15,9 @@
       #{comment.comment}
       %span.label.label-primary.pull-right 
         -if comment.user.nil?
-          Anonymous
+          Anonymous -- #{comment.created_at}
         -else
-          #{comment.user.name.camelcase}
+          #{comment.user.name.camelcase} -- #{comment.created_at}
 
 
 =form_for [@post, @post.comments.build] do |comment_form|
