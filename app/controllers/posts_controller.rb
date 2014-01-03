@@ -25,7 +25,18 @@ class PostsController < ApplicationController
 	end
 
 	def show
+		@likes = 0
+		@dislikes = 0
+
 		@post = Post.find(params[:id])	
+
+		@post.likes.each do |vote|
+			if vote.like == true
+				@likes += 1
+			else
+				@dislikes += 1	
+			end
+		end	
 	end
 
 	def edit
