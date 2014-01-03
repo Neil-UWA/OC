@@ -25,8 +25,8 @@ class PostsController < ApplicationController
 	end
 
 	def show
-		@likes = 0
-		@dislikes = 0
+		@likes = 0		 # how many people like this post
+		@dislikes = 0  # how many people disliek this post
 
 		@post = Post.find(params[:id])	
 
