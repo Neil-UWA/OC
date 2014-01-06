@@ -13,6 +13,10 @@ LearningApp::Application.routes.draw do
 		resources :likes, only: :create
 	end 
 
+	resources :categories do 
+		resources :posts
+	end 
+
 	get 'likes/create/:status', to: 'likes#create', as: 'vote'
 
 	resources :sessions, only:[:create, :new, :destroy]

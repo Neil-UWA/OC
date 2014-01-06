@@ -12,15 +12,18 @@ class PostsController < ApplicationController
 
 	def create
 		@user = User.find(params[:user_id])
-		@post = @user.posts.build(params[:post].permit(:title, :content))
-		@category = @post.categories.build(params[:category].permit(:category))
+		@post = @user.posts.build(post_params)
 
-		if @post.save and @category.save
-			flash.now[:success] =  "Successfull created a post"
-			redirect_to user_posts_path(@user) 
-		else 
-			flash.now[:notice]= "Title or Content can not be empty"	
-			render "new"
+		# see whether the category exists
+		@category = Category.find_by_category(params[:category][:category])
+
+		# if the category doesnt exits, create a new one
+		if @category.nil?
+			@category = Category.new(category_params)
+		end
+		
+		if PostCategory.create(post:@post, category:@category)
+			redirect_to @post
 		end 
 	end
 
@@ -50,4 +53,11 @@ class PostsController < ApplicationController
 		redirect_to user_posts_path(@user) if @post.update(params[:post].permit(:title, :content)) 
 	end
 
+	private
+	def post_params
+		params[:post].permit(:title, :content)
+	end
+	def category_params
+		params[:category].permit(:category)
+	end
 end

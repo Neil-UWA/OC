@@ -1,0 +1,5 @@
+%ul.list-group
+  - @category.posts.each do |post|
+    %li.list-group-item 
+      =link_to "#{post.title}", post_path(post)
+  

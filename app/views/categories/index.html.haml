@@ -1,0 +1,11 @@
+%h1 Category#Index
+
+-provide(:title, "Categories")
+
+-if @categories.any?
+  %ul.list-group
+    -@categories.each do | category |
+      %li.list-group-item
+        =link_to "#{category.category}", category_path(category)
+
+=will_paginate
