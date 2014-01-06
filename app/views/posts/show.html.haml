@@ -8,18 +8,18 @@
     %p #{@post.content}
 
 -if current_user == @post.user
-  =link_to "Up", vote_path(status:'true', post_id:@post), {class:"btn disabled"}
+  =link_to "", vote_path(status:'true', post_id:@post), {class:"btn disabled glyphicon glyphicon-thumbs-up"}
 -else
-  =link_to "Up", vote_path(status:'true', post_id:@post)
+  =link_to "", vote_path(status:'true', post_id:@post), {class:"glyphicon glyphicon-thumbs-up"}
 
 %span 
   =@likes
   likes
 
 -if current_user == @post.user
-  =link_to "Down", vote_path(status:'false', post_id:@post), {class:"btn disabled"}
+  =link_to "", vote_path(status:'false', post_id:@post), {class:"btn disabled glyphicon glyphicon-thumbs-down"}
 -else
-  =link_to "Down", vote_path(status:'false', post_id:@post)
+  =link_to "", vote_path(status:'false', post_id:@post), {class:"glyphicon glyphicon-thumbs-down"}
 
 %span 
   =@dislikes
@@ -43,5 +43,5 @@
     =comment_form.label :comment
     =comment_form.text_area :comment, {class:"form-control"}
 
-  =comment_form.submit "Comment", {class: "btn btn-primary"}
+  =comment_form.submit "Comment", {class: "btn btn-primary pull-right"}
 
