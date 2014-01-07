@@ -14,17 +14,21 @@ class PostsController < ApplicationController
 		@user = User.find(params[:user_id])
 		@post = @user.posts.build(post_params)
 
-		# see whether the category exists
-		@category = Category.find_by_category(params[:category][:category])
+		@categories = category_params.split(",")
 
-		# if the category doesnt exits, create a new one
-		if @category.nil?
-			@category = Category.new(category_params)
-		end
-		
-		if PostCategory.create(post:@post, category:@category)
-			redirect_to @post
+		@categories.each do |category|
+			# see whether the category exists
+			@category = Category.find_by_category(category)
+
+			# if the category doesnt exits, create a new one
+			if @category.nil?
+				@category = Category.new(category:category)
+			end
+
+			PostCategory.create(post:@post, category:@category)
 		end 
+
+		redirect_to @post
 	end
 
 	def show
@@ -58,6 +62,6 @@ class PostsController < ApplicationController
 		params[:post].permit(:title, :content)
 	end
 	def category_params
-		params[:category].permit(:category)
+		params[:category][:category]
 	end
 end

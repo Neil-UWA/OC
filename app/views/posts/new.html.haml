@@ -11,7 +11,7 @@
     =fields_for  @post.categories.build do |category_form|
       .input-group
         .input-group-addon Tag
-        =category_form.text_field :category, {class: "form-control"}
+        =category_form.text_field :category, {class: "form-control", placeholder: "input tags, seperate with ','"}
 
   =post_form.submit "Post", {class: "btn btn-primary"} 
 
