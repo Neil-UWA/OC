@@ -3,3 +3,14 @@
     %h2.alert.alert-success #{flash[:notice]} 
   =link_to "Create a Post", new_user_post_path(@user)
   =link_to "All Posts", posts_path
+
+.panel.panel-default
+  .panel-heading
+    %span.label.label-primary Comment 
+    %span.pull-right Post
+%ul.list-group
+  -@comments.each do |comment|
+    %li.list-group-item
+      #{comment.comment}
+      =link_to "#{comment.post.title}", post_path(comment.post), {class:"pull-right"}
+

@@ -17,6 +17,8 @@ class UsersController < ApplicationController
 	
 	def show
 		@user = User.find(params[:id]) 
+		@comments = @user.comments
+
 		redirect_to root_path unless @user
 	end
 
