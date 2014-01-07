@@ -14,26 +14,27 @@ class PostsController < ApplicationController
 		@user = User.find(params[:user_id])
 		@post = @user.posts.build(post_params)
 
-		@categories = category_params.split(",")
+		if category_params != ""
+			@categories = category_params.split(",")
 
-		@categories.each do |category|
-			# see whether the category exists
-			@category = Category.find_by_category(category)
+			@categories.each do |category|
+				@category = Category.find_by_category(category)
 
-			# if the category doesnt exits, create a new one
-			if @category.nil?
-				@category = Category.new(category:category)
-			end
+				if @category.nil?
+					@category = Category.new(category:category)
+				end
 
-			PostCategory.create(post:@post, category:@category)
-		end 
+				PostCategory.create(post:@post, category:@category)
+			end 
+		else
+			@post.save
+		end
 
 		redirect_to @post
 	end
 
 	def show
-		@likes = 0		 # how many people like this post
-		@dislikes = 0  # how many people disliek this post
+		@likes, @dislikes = 0, 0 
 
 		@post = Post.find(params[:id])	
 

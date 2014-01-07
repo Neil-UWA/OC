@@ -1,3 +1,6 @@
+.jumbotron
+  %h1 #{@category.category}
+
 %ul.list-group
   - @category.posts.each do |post|
     %li.list-group-item 

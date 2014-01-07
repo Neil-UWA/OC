@@ -4,17 +4,15 @@
   .panel.panel-default
     .panel-heading
       %span.label.label-primary Title
-      %span.pull-right Tag
+      %span.pull-right Tags
 
   %ul.list-group
     -@posts.each do |post|
       %li.list-group-item 
         =link_to "#{post.title} -- #{post.user.name}", post_path(post) 
-        %span.badge 
-          -if post.categories.count !=0
-            -post.categories.each do |category|
-              #{category.category}
-          -else
-            0
+        -if post.categories.count !=0
+          -post.categories.each do |category|
+            =link_to "#{category.category}", category_path(category), {class:"badge"}
+                
 
   =will_paginate 
