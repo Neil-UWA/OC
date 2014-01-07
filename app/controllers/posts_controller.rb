@@ -24,12 +24,21 @@ class PostsController < ApplicationController
 					@category = Category.new(category:category)
 				end
 
-				PostCategory.create(post:@post, category:@category)
+				if !PostCategory.create(post:@post, category:@category)
+					flash.now[:notice] = "Title / Content can not be empty"
+					render "new"
+					return 
+				end
 			end 
 		else
-			@post.save
+			if !@post.save
+				flash.now[:notice] = "Title / Content can not be empty"
+				render "new"
+				return 
+			end
 		end
 
+		flash.now[:success] = "Successfully created a post"
 		redirect_to @post
 	end
 
