@@ -27,6 +27,9 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'bootstrap-will_paginate', '~>0.0.10'
 gem 'rails-bootstrap-markdown'
+gem 'redcarpet', '~>3.0.0'
+gem 'albino'
+gem	'nokogiri'
 
 group :doc do
   gem 'sdoc', require: false
