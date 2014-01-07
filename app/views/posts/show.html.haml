@@ -4,7 +4,7 @@
       =@post.title
   .panel-body
     %h6 by #{@post.user.name.camelcase} 
-    %h6 #{@post.created_at.in_time_zone(Time.zone="Beijing").to_formatted_s(:db)} #{Time.zone}
+    %h6 #{@post.created_at.in_time_zone(Time.zone="Beijing").to_formatted_s(:db)} 
     %p #{@post.content}
 
 -if current_user == @post.user
