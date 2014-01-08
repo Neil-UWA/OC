@@ -1,5 +1,5 @@
 class PasswordMailer < ActionMailer::Base
-  default from: "lujinang@gmail.com"
+  default from: "app20693153@heroku.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -8,6 +8,7 @@ class PasswordMailer < ActionMailer::Base
   #
   def reset_password_email(email)
     @greeting = "Hi"
+    
 		@url = "localhost:3000/home"
 
     mail to: email, subject: "resetting your password" 

@@ -4,11 +4,18 @@ class PasswordsController < ApplicationController
 
 	def create
 		if User.find_by_email( params[:password][:email])
-			PasswordMailer.reset_password_email(params[:password].permit(:email)).deliver
-			flash.now[:success] = "Check your email"
+			PasswordMailer.reset_password_email(params[:password][:email]).deliver
+			flash.now[:success] = "Check your email to reset your password"
+      redirect_to root_path
 		else
 			flash.now[:notice] = "The email is not valid or doesn't exits"
+      render "new"
 		end
-		render "new"
 	end
+  
+  def edit
+  end
+  def update
+    
+  end
 end
