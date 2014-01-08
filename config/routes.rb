@@ -1,10 +1,7 @@
 LearningApp::Application.routes.draw do
-  get "users/signin"
 
 	resources :users do 
 		resources :posts
-		#resources :comments
-		#resources :likes
 	end 
 	
 	resources :posts do
@@ -20,9 +17,12 @@ LearningApp::Application.routes.draw do
 	get 'likes/create/:status', to: 'likes#create', as: 'vote'
 
 	resources :sessions, only:[:create, :new, :destroy]
+
 	get 'signup', to: 'users#new'
 	get 'signin', to: 'sessions#new'
 	get 'signout', to: 'sessions#destroy', method: :delete
+
+	resource :password
 
   root "home#index"
 	get 'home', to:'home#index'
