@@ -2,7 +2,7 @@
 
 .jumbotron
   %h2 Reset your password 
-  =form_for :password, url: password_path(:password) do |password_form|
+  =form_for :password, url: passwords_path(:password) do |password_form|
     .form-group
       =password_form.text_field :email, {class:"form-control", placeholder: "Email for reseting your password"}
 

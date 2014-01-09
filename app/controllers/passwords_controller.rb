@@ -6,11 +6,11 @@ class PasswordsController < ApplicationController
 		@user = User.find_by_email(params[:password][:email])
 		if @user 
 			@user.send_password_reset
-			flash.now[:success] = "Check your email"
+			flash[:success] = "Check your email"
 			redirect_to root_path
 		else
-			flash.now[:notice] = "The email is not valid or doesn't exits"
-			redirect_to "new"
+			flash[:notice] = "The email is not valid or doesn't exits"
+			render "new"
 		end
 	end
 
