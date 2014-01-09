@@ -22,7 +22,7 @@ LearningApp::Application.routes.draw do
 	get 'signin', to: 'sessions#new'
 	get 'signout', to: 'sessions#destroy', method: :delete
 
-	resource :password
+	resources :passwords
 
   root "home#index"
 	get 'home', to:'home#index'

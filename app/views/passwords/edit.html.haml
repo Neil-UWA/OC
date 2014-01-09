@@ -1,0 +1,7 @@
+%h1 Password#Edit
+
+=form_for @user, url:password_path(params[:id]) do |password_form|
+  .form-group
+    =password_form.password_field :password, {class: "form-control", placeholder:"new password"}
+    =password_form.password_field :password_confirmation, {class: "form-control", placeholder:"confirm your password"}
+  =password_form.submit "Update", {class: "btn btn-primary", style:"float:right;"} 

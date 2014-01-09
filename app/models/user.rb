@@ -20,7 +20,12 @@ class User < ActiveRecord::Base
 
 	validates :password, length: { minimum:6 }, confirmation: true
 
-	# class method, dont have to initialize an object
+	def send_password_reset
+		self.update_attribute(:password_reset_token, User.encrypt(User.new_remember_token))
+		self.update_attribute(:password_reset_sent_at, Time.zone.now)
+		PasswordMailer.reset_password_email(self).deliver
+	end
+
 	def User.new_remember_token
 		SecureRandom.urlsafe_base64	
 	end
