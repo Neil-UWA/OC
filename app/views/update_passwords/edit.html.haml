@@ -1,0 +1,11 @@
+-provide(:title, "Update Password")
+
+.jumbotron
+  =form_for @user, url:update_password_path(@user), html:{class:"form-signin"} do |user_form| 
+    .form-group
+      = user_form.password_field :password, {class: "form-control", placeholder:"password"}
+
+    .form-group
+      = user_form.password_field :password_confirmation, {class: "form-control", placeholder:"confirmation"}
+
+    = user_form.submit "Update",{class: "btn btn-primary btn-lg btn-block"}
