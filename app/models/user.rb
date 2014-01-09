@@ -21,9 +21,8 @@ class User < ActiveRecord::Base
 	validates :password, length: { minimum:6 }, confirmation: true
 
 	def send_password_reset
-		self.password_reset_token = User.encrypt(User.new_remember_token)
-		self.password_reset_sent_at =  Time.zone.now
-		save!
+		self.update_attribute(:password_reset_token, User.encrypt(User.new_remember_token))
+		self.update_attribute(:password_reset_sent_at ,Time.zone.now)
 		PasswordMailer.reset_password_email(self).deliver
 	end
 
