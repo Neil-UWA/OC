@@ -9,9 +9,7 @@ class UsersController < ApplicationController
 		@user = User.new(post_params)
 		if @user.save
 			sign_in @user
-
-			flash[:success] = "You have been registered to our service"
-			redirect_to posts_path
+			redirect_to posts_path, success: "You have been registered to our service"
 		else 
 			render "new"
 		end 

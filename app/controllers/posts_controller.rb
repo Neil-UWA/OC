@@ -15,45 +15,20 @@ class PostsController < ApplicationController
 		@post = @user.posts.build(post_params)
 
 		if category_params != ""
-			@categories = category_params.split(",")
-
-			@categories.each do |category|
-				@category = Category.find_by_category(category)
-
-				if @category.nil?
-					@category = Category.new(category:category)
-				end
-
-				if !PostCategory.create(post:@post, category:@category)
-					flash.now[:notice] = "Title / Content can not be empty"
-					render "new"
-					return 
-				end
-			end 
-		else
-			if !@post.save
-				flash.now[:notice] = "Title / Content can not be empty"
-				render "new"
-				return 
-			end
+			create_categories(@post, category_params)
+		elsif !@post.save
+			flash.now[:notice] = "Title / Content can not be empty"
+			render "new"
+			return 
 		end
 
-		flash.now[:success] = "Successfully created a post"
-		redirect_to @post
+		redirect_to @post, succes: "Successfully created a post"
 	end
 
 	def show
-		@likes, @dislikes = 0, 0 
-
 		@post = Post.find(params[:id])	
-
-		@post.likes.each do |vote|
-			if vote.like == true
-				@likes += 1
-			else
-				@dislikes += 1	
-			end
-		end	
+		@likes = @post.likes.where(like: true).count
+		@dislikes = @post.likes.where(like: false).count
 	end
 
 	def edit
@@ -71,7 +46,24 @@ class PostsController < ApplicationController
 	def post_params
 		params[:post].permit(:title, :content)
 	end
+
 	def category_params
 		params[:category][:category]
+	end
+
+	def create_categories(post, categories)
+		@categories = categories.split(",")
+
+		@categories.each do |category|
+			@category = Category.find_by_category(category)
+
+			@category = Category.new(category:category) if @category.nil?
+
+			if !PostCategory.create(post:post, category:@category)
+				flash.now[:notice] = "Title / Content can not be empty"
+				render "new"
+				return 
+			end
+		end 
 	end
 end

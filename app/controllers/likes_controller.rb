@@ -3,16 +3,10 @@ class LikesController < ApplicationController
 
 	def create
 		@post = Post.find(params[:post_id])
-		if params[:status] == 'true'
-			@like = @post.likes.build(like:true)
-		else
-			@like = @post.likes.build(like:false)
-		end
 
+		@like = @post.likes.build(like: params[:status])
 		@like.user = current_user
-	
-		if @like.save
-			redirect_to @post
-		end
+
+		redirect_to @post if @like.save
 	end
 end
