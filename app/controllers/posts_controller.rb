@@ -14,7 +14,7 @@ class PostsController < ApplicationController
 		@user = User.find(params[:user_id])
 		@post = @user.posts.build(post_params)
 
-		if category_params != ""
+		if !category_params.blank? 
 			create_categories(@post, category_params)
 		elsif !@post.save
 			flash.now[:alert] = "Title / Content can not be empty"
