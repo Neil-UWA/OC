@@ -11,3 +11,6 @@
 
     = user_form.submit "Update",{class: "btn btn-primary btn-lg btn-block"}
 
+-if @user.errors.any? 
+  :javascript
+    $('.field_with_errors').addClass("has-error");
