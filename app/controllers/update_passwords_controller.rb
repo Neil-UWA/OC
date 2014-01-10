@@ -6,8 +6,7 @@ class UpdatePasswordsController < ApplicationController
 	def update
 		@user = User.find(params[:id])
 		if @user.update_attribute(:password, params[:user][:password])
-			redirect_to signin_path, success: "Password has been updated, please login again"
-			sign_out
+			redirect_to signin_path, notice: "Password has been updated, please login again" and sign_out
 		else
 			render "edit"
 		end 

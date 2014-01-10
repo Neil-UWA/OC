@@ -8,6 +8,6 @@ class PasswordMailer < ActionMailer::Base
   #
   def reset_password_email(user)
 		@user = user	
-    mail to: @user.email, subject: "resetting your password" 
+    mail to: @user.email, subject: "Reset your password" 
   end
 end

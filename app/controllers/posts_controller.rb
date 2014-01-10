@@ -17,12 +17,12 @@ class PostsController < ApplicationController
 		if category_params != ""
 			create_categories(@post, category_params)
 		elsif !@post.save
-			flash.now[:notice] = "Title / Content can not be empty"
+			flash.now[:alert] = "Title / Content can not be empty"
 			render "new"
 			return 
 		end
 
-		redirect_to @post, succes: "Successfully created a post"
+		redirect_to @post, notice: "Successfully created a post"
 	end
 
 	def show
@@ -60,7 +60,7 @@ class PostsController < ApplicationController
 			@category = Category.new(category:category) if @category.nil?
 
 			if !PostCategory.create(post:post, category:@category)
-				flash.now[:notice] = "Title / Content can not be empty"
+				flash.now[:alert] = "Title / Content can not be empty"
 				render "new"
 				return 
 			end

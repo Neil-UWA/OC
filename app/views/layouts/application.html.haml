@@ -30,14 +30,14 @@
             =link_to "Contact", "#"
         %h3.text-muted Originate China
 
-      -if flash[:notice]
+      -if flash[:alert]
         .alert.alert-danger
           .h3
-            =flash[:notice]
-      -if flash[:success]
+            =flash[:alert]
+      -if flash[:notice]
         .alert.alert-success
           .h3
-            =flash[:success]
+            =flash[:notice]
 
       = yield 
 

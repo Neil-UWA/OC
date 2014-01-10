@@ -9,13 +9,12 @@ class SessionsController < ApplicationController
 			sign_in @user
 			redirect_to posts_path 
 		else
-			flash.now[:notice] = "Invalid Username/ Password"
+			flash.now[:alert] = "Invalid Account / Password"
 			render "new"
 		end
 	end
 
 	def destroy
-		sign_out
-		redirect_to root_path
+		sign_out and redirect_to root_path
 	end
 end
