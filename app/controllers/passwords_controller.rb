@@ -23,7 +23,7 @@ class PasswordsController < ApplicationController
 		
 		if @user.password_reset_sent_at < 0.5.hours.ago
 			redirect_to root_path, alert: "Password reset session expired"
-		elsif @user.update_attribute(:password, params[:user][:password])
+		elsif @user.update_attributes(params.require(:user).permit(:password, :password_confirmation))
 			redirect_to signin_path, notice: "Password has been reset"
 			@user.create_password_reset_token
 		else

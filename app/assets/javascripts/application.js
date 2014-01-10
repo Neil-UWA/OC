@@ -16,3 +16,8 @@
 //= require bootstrap-markdown
 //= require turbolinks
 //= require_tree .
+
+// error handling for user model
+$(document).ready( function() {
+	$('.field_with_errors').addClass("has-error");
+});
