@@ -15,6 +15,7 @@
 //= require bootstrap
 //= require bootstrap-markdown
 //= require turbolinks
+//= require_self
 //= require_tree .
 
 $(document).ready( function() {
