@@ -55,12 +55,10 @@ class PostsController < ApplicationController
 		@categories = categories.split(",")
 
 		@categories.each do |category|
-			@category = Category.find_by_category(category)
-			@category = Category.new(category:category) if @category.nil?
+			@category = Category.find_by_category(category) || Category.new(category:category)
 			if !PostCategory.create(post:post, category:@category)
 				flash.now[:alert] = "Title / Content can not be empty"
 				render "new"
-				return 
 			end
 		end 
 	end

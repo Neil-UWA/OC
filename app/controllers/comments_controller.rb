@@ -4,10 +4,6 @@ class CommentsController < ApplicationController
 		@comment = @post.comments.build(params[:comment].permit(:comment))
 		@comment.user = current_user
 
-		# TODO 
-		# error handling is needed here
-		@comment.save
-
-		redirect_to @post
+		redirect_to @post if @comment.save
   end
 end
