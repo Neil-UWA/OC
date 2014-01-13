@@ -21,6 +21,18 @@ gem 'redcarpet', '~>3.0.0'
 gem 'albino'
 gem	'nokogiri'
 
+group :development, :test do 
+	gem 'rspec-rails', '~>2.14.1'
+	gem 'factory_girl_rails', '~>4.3.0'
+end 
+
+group :test do 
+	gem 'faker'
+	gem 'capybara'
+	gem 'guard-rspec'
+	gem 'launchy'
+end
+
 group :doc do
   gem 'sdoc', require: false
 end
