@@ -1,5 +1,7 @@
 -provide(:title, "Rest password")
 
+=render "errors/errors", object:@user
+
 .jumbotron
   %h2 Reset password 
   =form_for @user, url:password_path(params[:id]) do |password_form|

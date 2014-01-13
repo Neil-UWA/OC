@@ -13,12 +13,11 @@ class User < ActiveRecord::Base
 
 	validates :name, 
 						:email,  
-						:password_confirmation,
 						:password, presence: true 
 
 	validates :email, format: { with:email_regex }, uniqueness: { case_sensitive:false }
 
-	validates :password, length: { minimum:6 }, confirmation: true
+	validates :password, length: { minimum:6 }
 
 	def create_password_reset_token
 		self.update_attribute(:password_reset_token, User.encrypt(User.new_remember_token))

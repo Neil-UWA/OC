@@ -1,5 +1,7 @@
 =provide :title, "Sign Up"
 
+=render "errors/errors", object: @user
+
 .jumbotron
   %h2.form-signin-heading Please sign up
   =render "sign_up_form"

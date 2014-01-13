@@ -1,5 +1,7 @@
 -provide(:title, "Update Password")
 
+=render "errors/errors", object: @user
+
 .jumbotron
   %h2 Update password
   =form_for @user, url:update_password_path(@user), html:{class:"form-signin"} do |user_form| 
