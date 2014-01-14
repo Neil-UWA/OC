@@ -3,6 +3,8 @@ LearningApp::Application.routes.draw do
 	resources :users do 
 		resources :posts
 	end 
+
+	resources :relationships, only: [:create, :destroy]
 	
 	resources :posts do
 		resources :categories, only: :create

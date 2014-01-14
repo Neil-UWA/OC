@@ -3,7 +3,9 @@
     %h1
       =@post.title
   .panel-body
-    %h6 by #{@post.user.name.camelcase} 
+    %h6 
+      by 
+      =link_to "#{@post.user.name.camelcase}", @post.user
     %h6 #{@post.created_at.in_time_zone(Time.zone="Beijing").to_formatted_s(:long)} 
     %p
       =markdown("#{@post.content}") 
