@@ -8,6 +8,9 @@ class CommentsController < ApplicationController
 			if @comment.save
 				format.html {redirect_to @post}
 				format.js  
+			else
+				format.html {render @post}
+				format.js {render js: "alert('comment cannot be empty')"}
 			end
 		end 
   end
