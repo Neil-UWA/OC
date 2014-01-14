@@ -4,6 +4,11 @@ class CommentsController < ApplicationController
 		@comment = @post.comments.build(params[:comment].permit(:comment))
 		@comment.user = current_user
 
-		redirect_to @post if @comment.save
+		respond_to do |format|
+			if @comment.save
+				format.html {redirect_to @post}
+				format.js  
+			end
+		end 
   end
 end

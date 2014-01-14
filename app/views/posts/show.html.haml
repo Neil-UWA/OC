@@ -28,18 +28,19 @@
 
 %h1 Comments
 
--@post.comments.each do |comment|
-  .panel.panel-danger
-    .panel-body 
-      #{comment.comment}
-      %span.label.label-primary.pull-right 
-        -if comment.user.nil?
-          Anonymous -- #{comment.created_at}
-        -else
-          #{comment.user.name.camelcase} -- #{comment.created_at}
+#comments
+  -@post.comments.each do |comment|
+    .panel.panel-danger
+      .panel-body 
+        #{comment.comment}
+        %span.label.label-primary.pull-right 
+          -if comment.user.nil?
+            Anonymous -- #{comment.created_at.to_formatted_s(:long)}
+          -else
+            #{comment.user.name.camelcase} -- #{comment.created_at.to_formatted_s(:long)}
+  
 
-
-=form_for [@post, @post.comments.build] do |comment_form|
+=form_for [@post, @post.comments.build], remote: true do |comment_form|
   .form-group
     =comment_form.label :comment
     =comment_form.text_area :comment, {class:"form-control"}
