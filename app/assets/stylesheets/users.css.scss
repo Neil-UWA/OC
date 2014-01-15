@@ -1,11 +1,6 @@
-// Place all the styles related to the Users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-//
 body {
   padding-top: 40px;
   padding-bottom: 40px;
-  //background-color: #eee;
 
 	.jumbotron {
 		li{ 
@@ -16,6 +11,7 @@ body {
 			display:block;
 		}
 	}
+
 	.form-signin {
 		max-width: 330px;
 		padding: 15px;
@@ -57,9 +53,6 @@ body {
 			border-top-right-radius: 0;
 		}
 	}
-	
-	#carbonads-container {display:none} h1[id] {padding-top:0px; margin-top:20px} .bs-old-docs {display:none} .bs-social {display:none} .col-md-3 {display:none !important} .col-md-9 {width:100% !important} .navbar-fixed-top {position:absolute !important}
-
 }
 
 

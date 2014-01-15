@@ -4,25 +4,26 @@
       =f.hidden_field :followed_id
       =f.submit "Follow", class: "btn  btn-primary"
 
-.jumbotron
+.jumbotron.col-xs-6
   =link_to "#{@user.reverse_relationships.count} Followers"
   =link_to "#{@user.relationships.count} Follows"
 
-.jumbotron
-  -if flash[:notice]
-    %h2.alert.alert-success #{flash[:notice]} 
+- if current_user.same_user(@user)
+  .jumbotron.col-xs-6
+    -if flash[:notice]
+      %h2.alert.alert-success #{flash[:notice]} 
+  
+    =link_to "Create a Post", new_user_post_path(@user)
+    =link_to "All Posts", posts_path
+    =link_to "Change Password", edit_update_password_path(@user)  
 
-  =link_to "Create a Post", new_user_post_path(@user)
-  =link_to "All Posts", posts_path
-  =link_to "Change Password", edit_update_password_path(@user)  
-
-.panel.panel-default
-  .panel-heading
-    %span.label.label-primary Comment 
-    %span.pull-right Post
-%ul.list-group
-  -@comments.each do |comment|
-    %li.list-group-item
-      #{comment.comment}
-      =link_to "#{comment.post.title}", post_path(comment.post), {class:"pull-right"}
+  .panel.panel-default
+    .panel-heading
+      %span.label.label-primary Comment 
+      %span.pull-right Post
+  %ul.list-group
+    -@comments.each do |comment|
+      %li.list-group-item
+        #{comment.comment}
+        =link_to "#{comment.post.title}", post_path(comment.post), {class:"pull-right"}
 

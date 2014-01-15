@@ -15,7 +15,7 @@
         .input-group-addon Tag
         =category_form.text_field :category, {class: "form-control", placeholder: "input tags, seperate with ','"}
 
-  =post_form.submit "Post", {class: "btn btn-primary"} 
+  =post_form.submit "Post", class: "btn btn-primary btn-block" 
 
 -if @post.errors.any? 
   :javascript
