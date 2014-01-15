@@ -12,6 +12,3 @@
       =password_form.password_field :password_confirmation, {class: "form-control", placeholder:"confirm your password"}
     =password_form.submit "Update", {class:"btn btn-primary btn-lg btn-block"} 
 
--if @user.errors.any? 
-  :javascript
-    $('.field_with_errors').addClass("has-error");

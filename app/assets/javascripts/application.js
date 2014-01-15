@@ -17,10 +17,10 @@
 //= require turbolinks
 //= require_tree .
 
-//$(document).ready( function() {
-//	$('.field_with_errors').addClass("has-error");
-//});
-//
-//$(document).on("page:load", function() {
-//	$('.field_with_errors').addClass("has-error");
-//});
+$(document).ready( function() {
+	$('.field_with_errors').addClass("has-error");
+});
+
+$(document).on("page:load", function() {
+	$('.field_with_errors').addClass("has-error");
+});
