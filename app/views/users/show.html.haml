@@ -1,29 +1,42 @@
--if !current_user.following?(@user) && !current_user.same_user(@user) 
-  .jumbotron
-    =form_for current_user.relationships.build(followed_id: @user.id) do |f|
-      =f.hidden_field :followed_id
-      =f.submit "Follow", class: "btn  btn-primary"
+-provide(:title, "Profile")
 
-.jumbotron.col-xs-6
-  =link_to "#{@user.reverse_relationships.count} Followers"
-  =link_to "#{@user.relationships.count} Follows"
+.jumbotron.col-xs-5.profile
+  %ul
+    %li
+      =@user.name.camelize
+      -if current_user
+        -if !current_user.following?(@user) && !current_user.same_user(@user) 
+          =form_for current_user.relationships.build(followed_id: @user.id) do |f|
+            =f.hidden_field :followed_id
+            =f.submit "Follow", class: "btn btn-xs btn-primary"
+        -elsif current_user.following?(@user) && !current_user.same_user(@user) 
+          =form_for current_user.relationships.build(followed_id: @user.id) do |f|
+            =f.hidden_field :followed_id
+            =f.submit "Unfollow", class: "btn btn-xs btn-primary"
 
-- if current_user.same_user(@user)
-  .jumbotron.col-xs-6
+    %li
+      =@user.email
+    %li
+      =link_to "#{@user.reverse_relationships.count} Followers"
+      =link_to "#{@user.relationships.count} Follows"
+
+
+- if current_user && current_user.same_user(@user)
+  .jumbotron.col-xs-5.col-xs-offset-2
     -if flash[:notice]
       %h2.alert.alert-success #{flash[:notice]} 
-  
+
     =link_to "Create a Post", new_user_post_path(@user)
     =link_to "All Posts", posts_path
     =link_to "Change Password", edit_update_password_path(@user)  
 
-  .panel.panel-default
-    .panel-heading
-      %span.label.label-primary Comment 
-      %span.pull-right Post
-  %ul.list-group
-    -@comments.each do |comment|
-      %li.list-group-item
-        #{comment.comment}
-        =link_to "#{comment.post.title}", post_path(comment.post), {class:"pull-right"}
+.panel.panel-default
+  .panel-heading
+    %span.label.label-primary Comment 
+    %span.pull-right Post
+%ul.list-group
+  -@comments.each do |comment|
+    %li.list-group-item
+      #{comment.comment}
+      =link_to "#{comment.post.title}", post_path(comment.post), {class:"pull-right"}
 

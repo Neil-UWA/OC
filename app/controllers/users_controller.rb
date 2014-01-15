@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_action :signed_in_user, except:[:new, :create]
+	before_action :signed_in_user, except:[:new, :create, :show]
 
 	def new
 		@user = User.new	
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 	end
 	
 	def show
-		@user = User.find(params[:id]) 
+		@user = User.find(params[:id])
 		@comments = @user.comments
 
 		redirect_to root_path unless @user

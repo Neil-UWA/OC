@@ -22,6 +22,10 @@ body {
 		}
 	}
 
+	.panel.panel-default{
+		clear: both;
+	}
+
 /* Make the masthead heading the same height as the navigation */
 
 /* Custom page footer */
@@ -57,6 +61,7 @@ body {
 		margin-top: 28px;
 	}
 }
+
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

@@ -3,12 +3,36 @@ body {
   padding-bottom: 40px;
 
 	.jumbotron {
-		li{ 
-			text-align: left;
+		padding: 0;
+		ul{
+			list-style: none;
+			li{ 
+				text-align: left;
+			}
 		}
 
 		a{
-			display:block;
+			display: block;
+		}
+
+	}
+
+	.jumbotron.profile{
+		padding: 0;
+		text-align: left;
+
+		a{
+			display: inline;
+			font-size: 20px;
+		}
+
+		form{
+			margin-left: 80px;
+			display: inline;
+			input[type="submit"]{
+				font-size: 13px;
+				padding: 2px 2px;
+			}
 		}
 	}
 
