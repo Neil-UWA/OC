@@ -10,8 +10,7 @@
             =f.hidden_field :followed_id
             =f.submit "Follow", class: "btn btn-xs btn-primary"
         -elsif current_user.following?(@user) && !current_user.same_user(@user) 
-          =form_for current_user.relationships.build(followed_id: @user.id) do |f|
-            =f.hidden_field :followed_id
+          =form_for current_user.relationships.find_by(followed_id: @user.id),html:{method: :delete} do |f|
             =f.submit "Unfollow", class: "btn btn-xs btn-primary"
 
     %li
@@ -19,7 +18,6 @@
     %li
       =link_to "#{@user.reverse_relationships.count} Followers"
       =link_to "#{@user.relationships.count} Follows"
-
 
 - if current_user && current_user.same_user(@user)
   .jumbotron.posts.col-xs-5.col-xs-offset-2
