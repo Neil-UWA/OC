@@ -3,14 +3,16 @@ development:
   database: db/development
   pool: 5
   timeout: 5000
-  host: localhost
+#  host: localhost
+  username: neil
 
 test:
   adapter: postgresql
   database: db/test
   pool: 5
   timeout: 5000
-  host: localhost
+ # host: localhost
+  username: neil
 
 production:
   adapter: postgresql
