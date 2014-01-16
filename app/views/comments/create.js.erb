@@ -1,9 +1,0 @@
-<% if @comment.user.nil? %>
-	$("#comments").append(" <div class='panel panel-danger'><div class='panel-body'> <%=j @comment.comment %><span class='label label-primary pull-right'>Anonymous</span></div></div>");
-<% else %>
-	$("#comments").append("<div class='panel panel-danger'>" +
-			"<div class='panel-body'> <%=j @comment.comment%><span class='label label-primary pull-right'><%=j @comment.user.name.camelcase%></span></div></div>");
-<% end %>
-
-$("#comment_comment").val("");
-

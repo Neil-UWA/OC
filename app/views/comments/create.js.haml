@@ -1,0 +1,7 @@
+-if @comment.user.nil? 
+  $("#comments").append(" <div class='panel panel-danger'><div class='panel-body'>#{@comment.comment} <span class='label label-primary pull-right'>Anonymous -- #{@comment.created_at.in_time_zone(Time.zone = "Beijing").to_formatted_s(:long)}</span></div></div>");
+-else 
+  $("#comments").append("<div class='panel panel-danger'><div class='panel-body'>  #{@comment.comment}<span class='label label-primary pull-right'> #{@comment.user.name.camelcase} -- #{@comment.created_at.in_time_zone(Time.zone = "Beijing").to_formatted_s(:long)}</span></div></div>");
+
+$("#comment_comment").val("");
+
