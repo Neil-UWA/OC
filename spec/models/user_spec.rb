@@ -1,10 +1,16 @@
 require 'spec_helper'
 
-
 describe User do
 
-	context 'create a new user' do 
+	it { should have_many(:relationships) }
+	it { should have_many(:followed_users).through(:relationships) }
+	it { should have_many(:reverse_relationships)}
+	it { should have_many(:followers).through(:reverse_relationships) }
+	it { should have_many(:comments) }
+	it { should have_many(:posts) }
+	it { should have_many(:likes) }
 
+	context 'validations' do 
 		it 'has a valid factory' do
 			FactoryGirl.create(:user).should be_valid
 		end 

@@ -29,4 +29,6 @@ LearningApp::Application.routes.draw do
 
   root "home#index"
 	get 'home', to:'home#index'
+
+  get 'apis/response', to: 'response#respond'
 end
